@@ -1,0 +1,21 @@
+services:
+  windows22:
+    image: dockurr/windows
+    container_name: windows22
+    environment:
+      VERSION: "2022"
+      LANGUAGE: "English"
+      CPU_CORES: "15"
+      RAM_SIZE: "110G"
+      USERNAME: "Administrator"
+      PASSWORD: "0i0;4=V)aKet99c)uT?GH2"
+      DISK_SIZE: "1024G"
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8001:8006
+      - 3381:3389/tcp
+      - 3381:3389/udp
+    stop_grace_period: 2m
