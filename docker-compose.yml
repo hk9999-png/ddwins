@@ -7,7 +7,7 @@ services:
       LANGUAGE: "English"
       CPU_CORES: "15"
       RAM_SIZE: "110G"
-      USERNAME: "Administrator"
+      USERNAME: "admin"
       PASSWORD: "0i0;4=V)aKet99c)uT?GH2"
       DISK_SIZE: "999G"
     devices:
