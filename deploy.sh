@@ -195,13 +195,16 @@ choose_instance_name() {
 prompt_size() {
     local target_variable=$1 default_size=$2 size_label=$3 entered_size
     while true; do
-        read_value entered_size "$size_label [默认 $default_size]: " "$default_size"
+        read_value entered_size "$size_label [默认 $default_size，不带单位按 G]: " "$default_size"
         entered_size=${entered_size^^}
+        if [[ "$entered_size" =~ ^[1-9][0-9]{0,5}$ ]]; then
+            entered_size="${entered_size}G"
+        fi
         if [[ "$entered_size" =~ ^[1-9][0-9]{0,5}[MGT]$ ]]; then
             printf -v "$target_variable" '%s' "$entered_size"
             return 0
         fi
-        printf '请输入正整数和单位 M/G/T，例如 4096M、110G 或 1T。\n' >&2
+        printf '请输入正整数，不带单位默认 G，例如 80、300；也支持 4096M、80G 或 1T。\n' >&2
     done
 }
 
